@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/properties">Properties</a></li>
+<li><a href="/profile">Profile</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>Properties</h1>
+<form action="/properties" method="GET">
+<label for="location">Location:</label>
+<input type="text" name="location" id="location">
+<br>
+<label for="type">Type:</label>
+<select name="type" id="type">
+<option value="apartment">Apartment</option>
+<option value="house">House</option>
+<option value="villa">Villa</option>
+</select>
+<br>
+<input type="submit" value="Search">
+</form>
+<ul>
+{% for property in properties %}
+<li>
+<img src="{{ property.image_url }}" alt="{{ property.title }}">
+<h3>{{ property.title }}</h3>
+<p>{{ property.location }}</p>
+<p>{{ property.price }}/night</p>
+<a href="/property/{{ property.id }}">View Details</a>
+</li>
+{% endfor %}
+</ul>
+</main>
+<footer>
+<p>Copyright 2023 AayushBNB</p>
+</footer>
+</body>
+</html>
+
+
